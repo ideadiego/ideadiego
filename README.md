@@ -2,9 +2,10 @@
 <h3 align="center">A tech creator from Chile</h3>
 
 ## 💬 Ask me about
-- UI/UX
-- Frontent development
+- Mobile development
+- Web development
 - Entrepreneurship
+- UI/UX
 - Data visualization
 - Arduino
 - Virtual reality
