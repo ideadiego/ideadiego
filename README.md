@@ -21,6 +21,6 @@
 - Sports (🚵‍♂️,⚽,🏀)
 
 
-## 💻 Current projects
-- [Practisely](https://practisely.netlify.app/)
-- [Ideadiego](https://ideadiego.com/)
+## 💻 Currently doing
+- Mobile apps
+- Web apps
