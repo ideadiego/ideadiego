@@ -35,6 +35,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -60,6 +61,25 @@ export default {
     },
   },
 
+  googleFonts: {
+    prefetch: true,
+    preconnect: true,
+    families: {
+      Georama: {
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      },
+      Inconsolata: {
+        wght: [200, 300, 400, 500, 600, 700, 800, 900],
+      },
+      Bitter:{
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      },
+      Lobster: [400],
+      'Abril+Fatface': [400]
+    }
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+
+@tailwind utilities;
+
+/* html{
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,apple color emoji,segoe ui emoji,Segoe UI Symbol,noto color emoji
+} */
+
+/* @layer base{
+    [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+        @apply bg-gray-800 px-3 py-2
+    }
+} */
+
+.notch{
+  clip-path: polygon(5% 0, 100% 0, 100% 82%, 94% 100%, 0 100%, 0 19%);
+}
+.notch-squared{
+  clip-path: polygon(12% 0, 100% 0, 100% 87%, 89% 100%, 0 100%, 0 12%);
+ }
+
+.notch-inverted{
+  clip-path: polygon(0 0, 89% 0, 100% 25%, 100% 99%, 11% 99%, 0 78%);
+ }
+.notch-inverted-squared{
+  clip-path: polygon(0 0, 87% 0, 100% 12%, 100% 100%, 14% 100%, 0 87%);
+ }
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+text:hover{
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.tag:hover{
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.swap {
+  @apply cursor-pointer;
+}
+
+.swap > * {
+  @apply transition-all ease-in-out duration-300;
+}
+
+.swap-rotate .swap-on,
+.swap-rotate .swap-indeterminate,
+.swap-rotate input:indeterminate ~ .swap-on {
+  @apply rotate-45;
+}
+
+.swap-rotate input:checked ~ .swap-off,
+.swap-rotate.swap-active .swap-off,
+.swap-rotate input:indeterminate ~ .swap-off {
+  @apply -rotate-45;
+}
+
+.swap-rotate input:checked ~ .swap-on,
+.swap-rotate.swap-active .swap-on,
+.swap-rotate input:indeterminate ~ .swap-indeterminate{
+  @apply rotate-0;
+}
+
+.swap-flip {
+  transform-style: preserve-3d;
+  perspective: 16em;
+}
+.swap-flip .swap-on,
+.swap-flip .swap-indeterminate,
+.swap-flip input:indeterminate ~ .swap-on {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  @apply opacity-100;
+}
+
+.swap-flip input:checked ~ .swap-off,
+.swap-flip.swap-active .swap-off,
+.swap-flip input:indeterminate ~ .swap-off {
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+  @apply opacity-100;
+}
+
+.swap-flip input:checked ~ .swap-on,
+.swap-flip.swap-active .swap-on,
+.swap-flip input:indeterminate ~ .swap-indeterminate{
+  transform: rotateY(0deg);
+} 
+
+.swap {
+  @apply inline-grid place-content-center select-none relative;
+}
+
+.swap > * {
+  @apply row-start-1 col-start-1;
+}
+
+.swap input{
+  @apply appearance-none;
+}
+
+.swap .swap-on,
+.swap .swap-indeterminate,
+.swap input:indeterminate ~ .swap-on {
+  @apply opacity-0;
+}
+
+.swap input:checked ~ .swap-off,
+.swap.swap-active .swap-off,
+.swap input:indeterminate ~ .swap-off {
+  @apply opacity-0;
+}
+
+.swap input:checked ~ .swap-on,
+.swap-active .swap-on,
+.swap input:indeterminate ~ .swap-indeterminate{
+  @apply opacity-100;
+} 
