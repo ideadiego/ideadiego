@@ -23,7 +23,7 @@
                         <img :src="`/images/placeholder.png`" :alt="project.alt" class="h-40 md:h-56 w-64 md:w-80 object-cover">
                     </div>
                     </nuxt-link>
-                    <div class="flex flex-1 flex-col p-5 justify-between w-64 md:w-80">
+                    <div class="flex flex-1 flex-col p-5 w-64 md:w-80">
                         <nuxt-link :to="project.path">
                         <div class="flex items-center justify-between text-sm">
                             <p class="">{{parsed_date(project.startedAt, "long")}}</p>
@@ -39,8 +39,8 @@
                         <h4 class="font-bitter text-sm font-light mb-3 leading-snug">{{project.description}}</h4>
                         </nuxt-link>
                         <div class="flex flex-wrap gap-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
-                                #{{ tag.split(' ')[0] }}
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+                                #{{ tag.split(' ').slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                             <p class="text-xs ml-3">{{reading_time(post.body.children, 0)}} min read</p>
                         </div>
                         <div class="flex flex-wrap gap-2 my-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" v-for="tag in post.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
-                                #{{ tag.split(" ")[0] }}
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" v-for="tag in post.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+                                #{{ tag.split(' ').slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                         <div class="text-xs line-clamp-1">

@@ -47,7 +47,7 @@
                       <br>
                       I usually describe myself as proactive and enthusiast.
                       <br>
-                      I've always dreamt with becoming an inventor but thought that everything was invented. I was so wrong.
+                      I've always dreamt with becoming an inventor but thought that everything was invented already. I was so wrong.
                     </p>
                 </div>
             </div>

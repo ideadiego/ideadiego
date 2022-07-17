@@ -13,8 +13,8 @@
                             <p class="text-xs ml-3">{{reading_time(post.body.children, 0)}} min read</p>
                         </div>
                         <div class="flex flex-wrap gap-2 my-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" v-for="tag in post.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" class="tag bg-neutral-focus btn-xs notch py-1">
-                                #{{ tag.split(" ")[0] }}
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" v-for="tag in post.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" class="tag bg-neutral-focus btn-xs notch py-1">
+                                #{{ tag.split(" ").slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                         <div class="text-xs line-clamp-1">

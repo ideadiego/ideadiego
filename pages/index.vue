@@ -1,11 +1,13 @@
 <template>
   <main class="px-3">
-    <section class="flex flex-col items-center justify-center mt-5 md:mt-12 md:mb-8">
+    <section class="flex flex-col items-center justify-center mt-5 mb-7 md:mt-12 md:mb-16">
         <div>
             <h2 class="text-3xl md:text-6xl font-black tracking-wide my-2 text-center md:text-left text-primary">Diego Valenzuela</h2>
             <p class="my-6 text-lg text-center text-secondary md:text-left">
-                Software engineer student with design and entrepreneurial skills, currently focused in full-stack web development. <br> 
-            Here I share my progress of learning and discuss concepts and ideas for digital product creation.</p>
+                Software engineer student with design and entrepreneurial skills, currently focused in mobile development.
+                <br> 
+                Here I share my progress of learning and discuss concepts and ideas for digital product creation.
+            </p>
             <p class="mt-2 text-sm text-center md:text-left">
             You can find me in 
             <span class="text-accent font-medium hover:underline">
@@ -23,8 +25,8 @@
         </div>
     </section>
 
-    <section class="grid grid-cols-1 mx-auto">
-        <h2 class="text-primary font-semibold text-xl mt-6 md:mx-6">What I write about</h2>
+    <section class="pt-2">
+        <h2 class="text-primary font-bold text-xl max-w-6xl mx-auto">What I write about</h2>
         <cloud class="mx-auto"
         :width="innerWidth-30"
         :height="(innerHeight/3)+100"
@@ -38,11 +40,11 @@
         />
     </section>
     <section id="recent_posts">
-        <div class="flex justify-between items-center mb-6 md:mx-6 font-semibold">
+        <div class="flex justify-between items-center mb-6 max-w-6xl mx-auto font-bold">
             <h2 class="text-primary mt-2 text-xl">Recent posts</h2>
             <nuxt-link to="/posts" class="notch-inverted btn-secondary btn-sm px-3 pt-1">All Posts</nuxt-link>
         </div>
-        <div class="max-w-5xl mx-auto grid grid-rows-none md:grid-rows-3 grid-cols-1 md:grid-cols-12 gap-4">
+        <div class="max-w-6xl mx-auto grid grid-rows-none md:grid-rows-3 grid-cols-1 md:grid-cols-12 gap-4 md:gap-x-12 md:gap-y-8">
             <template v-for="post in posts">
                 <div v-if="post == posts[0]" class="row-span-3 col-start-1 col-span-12 md:col-span-5 notch-squared inline-flex flex-col bg-neutral text-neutral-content" >
                     <nuxt-link :to="post.path">
@@ -63,51 +65,51 @@
                                 <p class="text-xs ml-3">{{reading_time(post.body.children, 0)}} min read</p>
                             </div>
                         </nuxt-link>
-                        <div class="flex flex-wrap line-clamp-2 my-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" v-for="tag in post.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch mr-2 px-2 py-1">
-                                #{{ tag.split(" ")[0] }}
+                        <div v-if="post.tags" class="flex flex-wrap mt-2 gap-2">
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" v-for="tag in post.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+                                #{{ tag.split(' ').slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                         <nuxt-link :to="post.path">
-                            <h3 class="line-clamp-2 font-bold leading-snug text-xl">{{post.title}}</h3>
+                            <h3 class="line-clamp-2 font-bold leading-snug text-xl mt-3">{{post.title}}</h3>
                             <p class="line-clamp-3 font-bitter text-sm font-light my-3 leading-snug">{{post.description}}</p>
                         </nuxt-link>
                     </div>
                 </div>
-                <nuxt-link :to="post.path" v-else class="notch h-32 md:h-40 flex bg-neutral text-neutral-content justify-between col-start-1 col-span-12 md:col-start-6 md:col-span-7">
+                <div v-else class="notch h-32 md:h-40 flex bg-neutral text-neutral-content justify-between col-start-1 col-span-12 md:col-start-6 md:col-span-7">
                     <div class="flex flex-1 flex-col py-1 px-5 justify-evenly">
-                        <div class="flex justify-between items-center">
+                        <nuxt-link :to="post.path" class="flex justify-between items-center">
                             <div class="flex items-center">
                                 <div class="hidden mr-3 md:block w-9 h-px bg-neutral-content"></div>
                                 <p class=" text-sm"> {{parsed_date(post.createdAt, 'full')}} </p>
                             </div>
                             <p class="text-xs ml-3">{{reading_time(post.body.children, 0)}} min read</p>
-                        </div>
-                        <div class="flex flex-wrap line-clamp-1">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" v-for="tag in post.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch mr-2 px-2 py-1">
-                                #{{ tag.split(" ")[0] }}
+                        </nuxt-link>
+                        <div v-if="post.tags" class="flex flex-wrap line-clamp-1">
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" v-for="tag in post.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch mr-2 px-2 py-1">
+                                #{{ tag.split(" ").slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
-                        <div class="text-xs line-clamp-1">
+                        <nuxt-link :to="post.path" class="text-xs line-clamp-1">
                             <h3 class="font-bold line-clamp-2 leading-snug text-lg">{{post.title}}</h3>
-                        </div>
+                        </nuxt-link>
                     </div>
-                    <picture v-if="post.image">
+                    <nuxt-link :to="post.path" v-if="post.image">
                         <img :src="`/images/${post.image}`" :alt="post.alt" class="object-cover h-32 w-24 md:h-40 md:w-44 max-w-max">
-                    </picture>
-                </nuxt-link>
+                    </nuxt-link>
+                </div>
             </template>
         </div>
     </section>
 
     <section id="proudest_projects">
-        <div class="flex flex-wrap justify-between items-center mt-16 mb-10 md:mx-6 font-semibold">
+        <div class="flex flex-wrap justify-between items-center mt-16 mb-10 max-w-6xl mx-auto font-bold">
             <h2 class="text-primary text-xl">Proudest projects</h2>
-            <nuxt-link to="/projects" class="notch-inverted btn-secondary btn-sm px-3 pt-1">All Projects</nuxt-link>
+            <nuxt-link to="/projects" class="notch-inverted btn-secondary btn-sm px-3 pt-1 ">All Projects</nuxt-link>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-5xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-x-24 md:gap-y-12 gap-8 mx-auto max-w-6xl">
             <template v-for="project in projects" >
-                <div class="notch-squared relative flex flex-col bg-neutral text-neutral-content mx-auto mb-4">
+                <div class="notch-squared flex flex-col bg-neutral text-neutral-content mb-4 mx-auto">
                     <nuxt-link :to="project.path">
                     <div class="absolute top-4 right-3 flex text-xs">
                         <div v-if="project.halted">
@@ -124,7 +126,7 @@
                         <img :src="`/images/placeholder.png`" :alt="project.alt" class="h-40 md:h-56 w-64 md:w-80 object-cover">
                     </div>
                     </nuxt-link>
-                    <div class="flex flex-1 flex-col p-5 justify-between w-64 md:w-80">
+                    <div class="flex flex-1 flex-col p-5 w-64 md:w-80">
                         <nuxt-link :to="project.path">
                         <div class="flex items-center justify-between text-sm">
                             <p class="">{{parsed_date(project.startedAt, "long")}}</p>
@@ -139,9 +141,9 @@
                         <h3 class="font-bold my-3 leading-snug text-xl">{{project.title}}</h3>
                         <h4 class="font-bitter text-sm font-light mb-3 leading-snug">{{project.description}}</h4>
                         </nuxt-link>
-                        <div class="flex flex-wrap gap-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
-                                #{{ tag.split(' ')[0] }}
+                        <div v-if="project.tags" class="flex flex-wrap gap-2">
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+                                #{{ tag.split(' ').slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                     </div>
@@ -197,7 +199,7 @@
             .where({hidden: false})
             .without(['body'])
             .sortBy('proudness', 'desc')
-            .limit(4)
+            .limit(6)
             .fetch()
 
         return {
@@ -241,30 +243,38 @@
         get_tags(postTags, projectTags){
             let tags = []
             let nw = {}
-            for(let obj of postTags){
-                for (let tag of obj["tags"]){
-                    let t, c;
-                    let splitted = tag.split(" ");
-                    [t,c] = splitted
-                    t = t.charAt(0).toUpperCase() + t.slice(1);
-                    if(!(t in nw)){
-                        nw[t] = parseInt(c)
-                    }else{
-                        nw[t] += parseInt(c)
-                    } 
+            if(postTags[0].tags){
+                for(let obj of postTags){
+                    for (let tag of obj["tags"]){
+                        let t, c;
+                        let splitted = tag.split(" ");
+                        t = splitted.slice(0,-1)
+                        c = splitted[splitted.length - 1]
+                        t[0] = t[0].charAt(0).toUpperCase() + t[0].slice(1);
+                        t = t.join(' ')
+                        if(!(t in nw)){
+                            nw[t] = parseInt(c)
+                        }else{
+                            nw[t] += parseInt(c)
+                        } 
+                    }
                 }
             }
-            for(let obj of projectTags){
-                for (let tag of obj["tags"]){
-                    let t, c;
-                    let splitted = tag.split(" ");
-                    [t,c] = splitted
-                    t = t.charAt(0).toUpperCase() + t.slice(1);
-                    if(!(t in nw)){
-                        nw[t] = parseInt(c)
-                    }else{
-                        nw[t] += parseInt(c)
-                    } 
+            if(projectTags[0].tags){
+                for(let obj of projectTags){
+                    for (let tag of obj["tags"]){
+                        let t, c;
+                        let splitted = tag.split(" ");
+                        t = splitted.slice(0,-1)
+                        c = splitted[splitted.length - 1]
+                        t[0] = t[0].charAt(0).toUpperCase() + t[0].slice(1);
+                        t = t.join(' ')
+                        if(!(t in nw)){
+                            nw[t] = parseInt(c)
+                        }else{
+                            nw[t] += parseInt(c)
+                        } 
+                    }
                 }
             }
             for (let key of Object.keys(nw)){

@@ -23,7 +23,7 @@
       <!-- <nuxt-link class="col-start-1 md:col-start-2 justify-self-center self-center" to="/"></nuxt-link> -->
       <div class="col-start-1 md:col-start-3 justify-self-center md:justify-self-end self-center flex gap-1.5">
         <p>Made with ❤ by</p>
-        <nuxt-link to="/about" class="w-5 h-5 inline-block self-center"><img src="/icon.png"  alt="ideadiego logo"></nuxt-link>
+        <nuxt-link to="/" class="w-5 h-5 inline-block self-center"><img src="/icon.png"  alt="ideadiego logo"></nuxt-link>
       </div>
     </footer>
   </div>

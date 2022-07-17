@@ -2,7 +2,7 @@
     <main>
         <h1 class="py-5 mx-auto max-w-5xl md:col-span-3 text-2xl md:text-4xl font-black tracking-wide text-primary">Projects</h1>
         <section class="px-3 mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <template v-for="project in projects" >
+            <template v-for="project in projects">
                 <div class="notch-squared flex mx-auto flex-col bg-neutral text-neutral-content mb-4">
                     <nuxt-link :to="project.path">
                     <div class="absolute top-4 right-3 flex text-xs">
@@ -20,7 +20,7 @@
                         <img :src="`/images/placeholder.png`" :alt="project.alt" class="h-40 md:h-56 w-64 md:w-80 object-cover">
                     </div>
                     </nuxt-link>
-                    <div class="flex flex-1 flex-col p-5 justify-between w-64 md:w-80">
+                    <div class="flex flex-1 flex-col p-5 w-64 md:w-80">
                         <nuxt-link :to="project.path">
                         <div class="flex items-center justify-between text-sm">
                             <p class="">{{parsed_date(project.startedAt, "long")}}</p>
@@ -36,8 +36,8 @@
                         <h4 class="font-bitter text-sm font-light mb-3 leading-snug">{{project.description}}</h4>
                         </nuxt-link>
                         <div class="flex flex-wrap gap-2">
-                            <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
-                                #{{ tag.split(' ')[0] }}
+                            <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" v-for="tag in project.tags" :key="tag.id" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+                                #{{ tag.split(' ').slice(0,-1).join(' ') }}
                             </nuxt-link>
                         </div>
                     </div>
