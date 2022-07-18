@@ -15,6 +15,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "core-js": "^3.19.3",
     "daisyui": "^1.25.4",
+    "js-confetti": "^0.10.2",
     "nuxt": "^2.15.8",
     "rehype-katex": "^5.0.0",
     "remark-math": "^4.0.0",

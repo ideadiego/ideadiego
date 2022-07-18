@@ -12,7 +12,6 @@
         @apply bg-gray-800 px-3 py-2
     }
 } */
-
 .notch{
   clip-path: polygon(5% 0, 100% 0, 100% 82%, 94% 100%, 0 100%, 0 19%);
 }

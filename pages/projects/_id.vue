@@ -17,8 +17,8 @@
       <h4 class="">{{project.description}}</h4>
 
       <div class="flex flex-wrap gap-2 my-6 text-neutral-content">
-          <nuxt-link :to="`/tags/${tag.split(' ')[0]}`" v-for="tag in project.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ')[0]]}; color: ${tagColors[tag.split(' ')[0]+'-text']}`" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
-              #{{ tag.split(" ")[0] }}
+          <nuxt-link :to="`/tags/${tag.split(' ').slice(0,-1).join(' ')}`" v-for="tag in project.tags" :key="tag.id" :style="`background-color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')]}; color: ${tagColors[tag.split(' ').slice(0,-1).join(' ')+'-text']}`" class="tag bg-neutral-focus btn-xs notch px-2 py-1">
+              #{{ tag.split(" ").slice(0,-1).join(' ') }}
           </nuxt-link>
       </div>
 
@@ -35,7 +35,7 @@
             </div>      
           </div>
       <article class="w-full mx-auto my-6">
-        <nuxt-content class="prose max-w-none mx-auto bg-base-100 text-base-content prose-headings:text-base-content prose-strong:text-base-content prose-img:rounded-md" :document="project" />
+        <nuxt-content class="prose max-w-none mx-auto bg-base-100 text-base-content prose-code:text-base-content prose-headings:text-base-content prose-strong:text-base-content prose-img:rounded-md prose-a:text-accent" :document="project" />
       </article>
     </section>
   </main>
@@ -92,3 +92,11 @@
       }
   }
 </script>
+
+<style>
+
+.prose pre{
+  border-radius: 0.375rem;
+}
+
+</style>
